@@ -80,6 +80,9 @@ We want to process that information by writing individual `Monitor` subclasses t
 Let's write a base abstract class called `AbstractMonitor`, with an abstract method called `process()` that returns a `String`, and a non-abstract method called `startMonitoring(String fileName)`:
 
 ```java
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
 public abstract class AbstractMonitor {
     public abstract String process();
     
@@ -102,6 +105,9 @@ Subclasses benefit from the `AbstractMonitor` class in that they don't have to r
 For example, let's write a subclass called `MemoryMonitor` that outputs the current time and CPU utilization:
 
 ```java
+import java.io.IOException;
+import java.util.Date;
+
 public class MemoryMonitor extends AbstractMonitor {
 
     @Override
