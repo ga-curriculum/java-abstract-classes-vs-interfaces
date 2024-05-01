@@ -1,4 +1,4 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![abstract classes vs interfaces](./assets/abstract-classes-and-interfaces-header.png)
 
 ## About
 
@@ -6,9 +6,7 @@ By the end of this lesson, students will be proficient in writing abstract class
 
 ## Prerequisites
 
-- tktk
-- tktk
-- tktk
+- None.
 
 ## Content
 

@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - tktk Microlesson Name](./assets/hero.png)
+# ![interfaces](./assets/interfaces.png)
 
 **Learning objective:** By the end of this lesson, students will be able to practice implementing interfaces by creating classes that adhere to defined contracts. 
 

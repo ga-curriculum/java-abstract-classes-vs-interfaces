@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - tktk Microlesson Name](./assets/hero.png)
+# ![abstract classes](./assets/abstract-classes.png)
 
 **Learning objective:** By the end of this lesson, students will be able to implement abstract classes in Java using the template method design pattern.
 
