@@ -107,11 +107,38 @@ All we have to do is implement your `Automobile` interface, and we can use your 
 
 By **implementing** your interface, the Java compiler will ensure our new `TeslaSatellite` class has implemented all of the methods in your `Automobile` interface, thus ensuring it's usable by our libraries:
 
-![](resources/unimplemented-interface.png)
+```java
+public class TeslaSatellite implement Automobiles {
+
+}
+```
 
 So, let's implement those methods and try again:
 
-![](resources/implemented-interface.png)
+```java
+public class TeslaSatellite implement Automobiles {
+    
+    @Override
+    public int getYear() {
+        return 2020;
+    }
+
+    @Override
+    public String getMake(){
+        return "Tesla";
+    }
+
+    @Override
+    public String getModel(){
+        return "Satellite";
+    }
+
+    @Override
+    public void startEngine(){
+        System.out.printIn("Silent hum!");
+    }
+}
+```
  
 > **Tip**: As we saw before, the `@Override` annotation is optional but desirable. 
 
@@ -119,7 +146,19 @@ So, let's implement those methods and try again:
 
 Surprisingly, interfaces may contain variables, but these variables are static and **must** be assigned values in the interface. Remember that static means the field can be accessed from the interface name — as in the example below — or from any class that implements that interface. And these variables are **final**: They may not be changed, as indicated by the red underline in IntelliJ.
 
-![](resources/reassign-interface-variable.png)
+```java
+public interface Automobile {
+    int getYear();
+    String getMake();
+    String getModel();
+    void startEngine();
+    int wheel = 4;
+    public static void main(String[] args) {
+        int wheels = Automobile.wheels;
+        Automobile.wheels = 5;
+    }
+}
+```
 
 ### Extending, Extending, Extending
 

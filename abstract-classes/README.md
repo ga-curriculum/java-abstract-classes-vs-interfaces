@@ -57,13 +57,44 @@ By seeing this, the developer and Java compiler both understand that there must 
 
 Let's say we wanted to create a `Circle` subclass, but we forgot to implement the `getArea()` method.
 
-![](resources/failed-to-implement-abstract.png)
+```java
+public class Cirlce extends Shape {
+    
+    private double radius;{
+        this.radius = radius;
+    }
 
-You can see that IntelliJ warns us — with a big red underline and a fat dialog box — that our class is doomed to fail when compiling.
+    @Override 
+    public double getCircumference() {
+        return 2 * Math.PI * radius;
+    }
+}
+```
+
+You should see that IntelliJ warns us — with a big red underline and a fat dialog box — that our class is doomed to fail when compiling.
 
 Once we implement the missing method, everything will go back to normal:
 
-![](resources/implement-abstract.png)
+```java
+public class Circle extends Shape {
+    private double radius;
+
+    public Cirlce (double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double getCircumference() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+```
 
 ----
 
