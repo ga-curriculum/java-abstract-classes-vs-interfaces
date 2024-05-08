@@ -12,9 +12,9 @@ By the end of this lesson, students will be proficient in writing abstract class
 
 | Lesson | Time | Learning Objectives |
 | ------ |:----------:|:------ |
-| [Abstract Classes](./abstract-classes/README.md) | 25 min | Implement abstract classes in Java using the template method design pattern.  |
-| [Interfaces](./interfaces/README.md) | 30 min | Practice implementing interfaces by creating classes that adhere to defined contracts.  |
-| **Total content**  | 55 min |  |
+| [Abstract Classes](./abstract-classes/README.md) | 20 min | Implement abstract classes in Java using the template method design pattern.  |
+| [Interfaces](./interfaces/README.md) | 25 min | Practice implementing interfaces by creating classes that adhere to defined contracts.  |
+| **Total content**  | 45 min |  |
 
 ## Additional Resources
 
