@@ -1,8 +1,11 @@
-# ![abstract classes](./assets/abstract-classes.png)
+<h1>
+  <span class="headline">Java Abstract Classes vs. Interfaces</span>
+  <span class="subhead">Abstract Classes</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to implement abstract classes in Java using the template method design pattern.
 
-## Opening (5 min)
+## Opening
 
 There are times when you want to implement some behavior in a class but want another developer to implement some other behavior.
 
@@ -25,9 +28,7 @@ In that example, both returned `0`.
 
 Now suppose a different developer implemented a subclass, such as `Circle`, and they weren't clear that the initial developer of the `Shape` class intended those two methods to be overridden to provide an implementation. Then, they would leave those unimplemented and we would suddenly find circles with circumferences and areas equal to zero.
 
-----
-
-## Demo: Abstract Classes (10 min)
+## Abstract classes
 
 To prevent this sort of communication breakdown, the developer of the `Shape` class can mark it as an **abstract class**. Abstract classes allow us to define abstract methods that **force** the developer to define an implementation. If they don't, the Java compiler will throw an error.
 
@@ -37,7 +38,7 @@ An abstract method can **only** be defined in an abstract class. To define an ab
 public abstract class Shape {
     // Contents
 }
-``` 
+```
 
 With that done, we can now define some abstract methods. These get a method signature and return type but don't get an implementation. The return type must be preceded by the `abstract` keyword, as in the following example:
 
@@ -51,14 +52,14 @@ public abstract class Shape {
 
 ```
 
-By seeing this, the developer and Java compiler both understand that there must be an implementation of a method called `getCircumference()` in a subclass of `Shape` and that it must return a `double` result. 
+By seeing this, the developer and Java compiler both understand that there must be an implementation of a method called `getCircumference()` in a subclass of `Shape` and that it must return a `double` result.
 
 **What if we forget to implement a method marked as `abstract`?**
 
 Let's say we wanted to create a `Circle` subclass, but we forgot to implement the `getArea()` method.
 
 ```java
-public class Cirlce extends Shape {
+public class Circle extends Shape {
     
     private double radius;{
         this.radius = radius;
@@ -79,7 +80,7 @@ Once we implement the missing method, everything will go back to normal:
 public class Circle extends Shape {
     private double radius;
 
-    public Cirlce (double radius) {
+    public Circle (double radius) {
         this.radius = radius;
     }
 
@@ -96,9 +97,7 @@ public class Circle extends Shape {
 
 ```
 
-----
-
-## Guided Practice: Abstract Classes in Action (10 min) 
+## Abstract classes in action
 
 A common use of abstract classes is to implement a **framework** or **template method** design pattern. This pattern allows the framework to define the larger behavior, leaving the particulars to the framework developer.
 

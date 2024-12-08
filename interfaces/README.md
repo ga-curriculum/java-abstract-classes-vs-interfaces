@@ -1,8 +1,11 @@
-# ![interfaces](./assets/interfaces.png)
+<h1>
+  <span class="headline">Java Abstract Classes vs. Interfaces</span>
+  <span class="subhead">Interfaces</span>
+</h1>
 
-**Learning objective:** By the end of this lesson, students will be able to practice implementing interfaces by creating classes that adhere to defined contracts. 
+**Learning objective:** By the end of this lesson, students will be able to practice implementing interfaces by creating classes that adhere to defined contracts.
 
-## Demo: Interfaces (10 min)
+## Interfaces
 
 Let's switch gears to interfaces. As we're walking through what an interface is and what it does, think about how it compares and contrasts to an abstract class.
 
@@ -32,7 +35,7 @@ public interface Automobile {
     void startEngine();
 }
 ```
- 
+
 Our `Automobile` is now contracted to provide a year, make, and model, and some functionality to start the engine. Notice how these methods are defined exactly like abstract methods in abstract classes?
 
 Now we can have some code that says something like:
@@ -47,11 +50,9 @@ auto.startEngine();
 
 Note that we didn't specify any visibility for the interface methods. That's because all interface methods are always public and non-static.
 
------
-
 ## Guided Practice: Implementing Interfaces (15 min)
 
-To implement an interface means you're committing to fulfilling the interface contract for the class that implements it. 
+To implement an interface means you're committing to fulfilling the interface contract for the class that implements it.
 
 The syntax is as follows:
 
@@ -99,7 +100,7 @@ class HondaAccord implements Automobile {
 }
 ```
 
-### Why Is This Important?
+### Why is this important?
 
 Let's say we're an auto manufacturing company, and last year we bought a large library of Java code from you for managing cars. We're coming out with a new kind of car, a model called Tesla Satellite, and we want to use the functionality in your `Automobile` library.
 
@@ -139,10 +140,10 @@ public class TeslaSatellite implement Automobiles {
     }
 }
 ```
- 
-> **Tip**: As we saw before, the `@Override` annotation is optional but desirable. 
 
-### Fields in Interfaces
+> **Tip**: As we saw before, the `@Override` annotation is optional but desirable.
+
+### Fields in interfaces
 
 Surprisingly, interfaces may contain variables, but these variables are static and **must** be assigned values in the interface. Remember that static means the field can be accessed from the interface name — as in the example below — or from any class that implements that interface. And these variables are **final**: They may not be changed, as indicated by the red underline in IntelliJ.
 
@@ -160,7 +161,7 @@ public interface Automobile {
 }
 ```
 
-### Extending, Extending, Extending
+### Extending, extending, extending
 
 Just like classes can extend classes, interfaces can extend other interfaces, and they inherit all the methods of the base interface. This is useful for complex systems we might encounter in real life.
 
@@ -219,29 +220,29 @@ class DodgeRam implements Automobile, TowVehicle {
 }
 ```
 
-> **Knowledge Check**: Take a second to consider the `DodgeRam` class. What methods are legal to run on it compared to the `HondaAccord` and the `TeslaSatellite` classes?
-
----
-
+> ❓ Take a second to consider the `DodgeRam` class. What methods are legal to run on it compared to the `HondaAccord` and the `TeslaSatellite` classes?
 
 ## Conclusion (5 min)
 
 Both interfaces and abstract classes are used for abstraction. They're implemented in similar ways, but interfaces are most useful when you don't have any shared code between the subclasses, unlike our `Monitor` example, wherein all `Monitor` instances were able to share the `startMonitoring(String filename)` method.
 
 Remember that interfaces:
-* Cannot be instantiated.
-* Cannot be static.
-* Cannot implement methods.
+
+- Cannot be instantiated.
+- Cannot be static.
+- Cannot implement methods.
 
 You should use **abstract classes** when:
-* You need both static and non-static methods.
-* You need both abstract and non-abstract methods.
-* You don't want all your fields to be `final`.
+
+- You need both static and non-static methods.
+- You need both abstract and non-abstract methods.
+- You don't want all your fields to be `final`.
 
 You should use **interfaces rather than abstract classes** when:
-* All the methods you're defining are abstract.
-* You need future developers to follow a certain pattern (this is our contract).
-* You need to use more than one interface. (Remember: A class can only extend one class.)
+
+- All the methods you're defining are abstract.
+- You need future developers to follow a certain pattern (this is our contract).
+- You need to use more than one interface. (Remember: A class can only extend one class.)
 
 The difference is somewhat subtle. Both interfaces and abstract classes are used for abstraction, but the key takeaway for knowing which one to use is whether or not the classes that would implement or extend the interface or abstract class will **share lines of code**.
 
