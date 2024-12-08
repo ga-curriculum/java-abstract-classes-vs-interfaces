@@ -13,7 +13,7 @@ tktk Write a short but descriptive summary of the content in this module.
 | ------ |:------------------:| ------ |
 | [Setup](../setup/README.md)                       |  5 min | Set up the development environment.                                                    |
 | [Abstract Classes](../abstract-classes/README.md) | 20 min | Implement abstract classes in Java using the template method design pattern.           |
-| [Interfaces](../interfaces/README.md)             | 25 min | Practice implementing interfaces by creating classes that adhere to defined contracts. |
+| [Interfaces](../interfaces/README.md)             | 20 min | Practice implementing interfaces by creating classes that adhere to defined contracts. |
 | **Total content**                                 | 45 min |                                                                                        |
 
 ## References
