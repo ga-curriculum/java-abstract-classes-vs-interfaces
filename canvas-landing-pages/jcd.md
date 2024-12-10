@@ -5,16 +5,18 @@
 
 ## About
 
-tktk Write a short but descriptive summary of the content in this module.
+In object-oriented programming (OOP), a **contract** refers to existence of an enforceable agreement between a superclass and it's subclass. This contract contains the superclass' expectations from a subclass, in the form of a set of behaviors (methods) to be possessed by a subclass. Any subclass that inherits from this superclass must fulfill the contract by declaring and defining of the methods specified by the subclass. The compiler enforces this contract by throwing compile-time exceptions on sub classes that fail to possess the definition of any of the contract methods.
+
+In Java, this OOP contract feature is implemented through **abstract classes** and **interfaces**.
 
 ## Content
 
 | Lesson | Est. Delivery Time | Skills |
 | ------ |:------------------:| ------ |
-| [Setup](../setup/README.md)                       |  5 min | Set up the development environment.                                                    |
-| [Abstract Classes](../abstract-classes/README.md) | 20 min | Implement abstract classes in Java using the template method design pattern.           |
-| [Interfaces](../interfaces/README.md)             | 20 min | Practice implementing interfaces by creating classes that adhere to defined contracts. |
-| **Total content**                                 | 45 min |                                                                                        |
+| [Setup](../setup/README.md)                       |  10 min | Set up the development environment.                                                    |
+| [Abstract Classes](../abstract-classes/README.md) | 20 min | Make Java code flexible, reusable and scalable using abstract classes.           |
+| [Interfaces](../interfaces/README.md)             | 20 min | Create and implement interfaces, and take decisions on when to use abstract classes and when to use interfaces. |
+| **Total content**                                | 50 min |                                                                                        |
 
 ## References
 

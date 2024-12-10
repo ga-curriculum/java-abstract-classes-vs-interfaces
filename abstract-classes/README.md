@@ -3,150 +3,136 @@
   <span class="subhead">Abstract Classes</span>
 </h1>
 
-**Learning objective:** By the end of this lesson, students will be able to implement abstract classes in Java using the template method design pattern.
+**Learning objective:** By the end of this lesson, you'll be able code flexible, reusable, and scalable java programs using abstract classes.
 
-## Opening
+## An introduction to abstract classes
+In Object Oriented Programming, abstraction is the technique of reducing complexity by:
+- Hiding unnecessary information.
+- Exposing only necessary information.
 
-There are times when you want to implement some behavior in a class but want another developer to implement some other behavior.
+There are two types of explicity abstract entities in Java:
+### 1. Abstract Methods
+ - Contain a method signature (method name and arguments).
+ - Do not contain a method body (statement block `{}`).
+ - Do not exist to be functional.
+ - Exist only for enforcing subclasses to implement the method body.
+ - Are differentiated from concrete methods using `abstract` keyword in their declaration. 
+   - For example: 
+      ```java
+      public abstract double calculateArea();
+      ```
+      Note that the method signatures have no braces `{}` and are terminated with a semicolon.
+ ### 2. Abstract Classes
+ - Must contain atleast one abstract method.
+ - Can contain instance variables, constructors, static methods and other concrete methods.
+ - Cannot be instantiated into objects
+ - Exist only to be extended by subclasses which then need to implement the abstract methods.
+ - Are differentiated from concrete methods using `abstract` in their declaration.
 
-For instance, in our earlier example of the `Shape` class, we provided a default implementation for the `getCircumference()` and `getArea()` methods:
-
+## Defining an abstract class
 ```java
-public class Shape {
-    public double getCircumference() {
-        return 0;
+// Abstract class representing the blueprint for all animals
+abstract class Animal {
+    String name;
+
+    // Constructor
+    public Animal(String name) {
+        this.name = name;
     }
 
-    public double getArea() {
-        return 0;
-    }
-}
-
-```
-
-In that example, both returned `0`.
-
-Now suppose a different developer implemented a subclass, such as `Circle`, and they weren't clear that the initial developer of the `Shape` class intended those two methods to be overridden to provide an implementation. Then, they would leave those unimplemented and we would suddenly find circles with circumferences and areas equal to zero.
-
-## Abstract classes
-
-To prevent this sort of communication breakdown, the developer of the `Shape` class can mark it as an **abstract class**. Abstract classes allow us to define abstract methods that **force** the developer to define an implementation. If they don't, the Java compiler will throw an error.
-
-An abstract method can **only** be defined in an abstract class. To define an abstract class, put `abstract` before the `class` keyword:
-
-```java
-public abstract class Shape {
-    // Contents
-}
-```
-
-With that done, we can now define some abstract methods. These get a method signature and return type but don't get an implementation. The return type must be preceded by the `abstract` keyword, as in the following example:
-
-```java
-
-public abstract class Shape {
-        public abstract double getCircumference();
-
-        public abstract double getArea();
-}
-
-```
-
-By seeing this, the developer and Java compiler both understand that there must be an implementation of a method called `getCircumference()` in a subclass of `Shape` and that it must return a `double` result.
-
-**What if we forget to implement a method marked as `abstract`?**
-
-Let's say we wanted to create a `Circle` subclass, but we forgot to implement the `getArea()` method.
-
-```java
-public class Circle extends Shape {
-    
-    private double radius;{
-        this.radius = radius;
+    // Concrete method (shared behavior)
+    public void eat() {
+        System.out.println(name + " is eating.");
     }
 
-    @Override 
-    public double getCircumference() {
-        return 2 * Math.PI * radius;
-    }
+    // Abstract method (unique behavior)
+    public abstract void move();
 }
 ```
-
-You should see that IntelliJ warns us — with a big red underline and a fat dialog box — that our class is doomed to fail when compiling.
-
-Once we implement the missing method, everything will go back to normal:
-
+## Extending an abstract class
 ```java
-public class Circle extends Shape {
-    private double radius;
-
-    public Circle (double radius) {
-        this.radius = radius;
+class Bird extends Animal {
+    public Bird(String name) {
+        super(name);
     }
 
+    // Implementing the abstract method
     @Override
-    public double getCircumference() {
-        return 2 * Math.PI * radius;
+    public void move() {
+        System.out.println(name + " is flying.");
+    }
+}
+
+class Fish extends Animal {
+    public Fish(String name) {
+        super(name);
     }
 
+    // Implementing the abstract method
     @Override
-    public double getArea() {
-        return Math.PI * radius * radius;
+    public void move() {
+        System.out.println(name + " is swimming.");
     }
 }
 
-```
-
-## Abstract classes in action
-
-A common use of abstract classes is to implement a **framework** or **template method** design pattern. This pattern allows the framework to define the larger behavior, leaving the particulars to the framework developer.
-
-Suppose we want to create a framework that does some (undefined) processing and writes the results to a file. This is a common operation in monitoring applications, where input could come from a database, files, event logs, devices, and more. It's a perfect use case for abstract classes.
-
-> **Note**: We purposely design the abstract class as generic so subclasses can handle potentially any of these cases.
-
-We want to process that information by writing individual `Monitor` subclasses that call the `process()` method and write the result to the file system.
-
-Let's write a base abstract class called `AbstractMonitor`, with an abstract method called `process()` that returns a `String`, and a non-abstract method called `startMonitoring(String fileName)`:
-
-```java
-import java.io.IOException;
-import java.io.RandomAccessFile;
-
-public abstract class AbstractMonitor {
-    public abstract String process();
-    
-    public void startMonitoring(String fileName) throws IOException, InterruptedException {
-        while(true) {
-            String value = process();
-
-            RandomAccessFile file = new RandomAccessFile(fileName, "rw");
-            file.seek(file.length());
-            file.write(value.getBytes());
-            file.writeChar('\n');
-            Thread.sleep(1000);
-        }
+class Dog extends Animal {
+    public Dog(String name) {
+        super(name);
     }
-}
-```
 
-Subclasses benefit from the `AbstractMonitor` class in that they don't have to rewrite the `startMonitoring(String filename)` method; they just have to worry about their own particular functionality for the `process()` method.
-
-For example, let's write a subclass called `MemoryMonitor` that outputs the current time and CPU utilization:
-
-```java
-import java.io.IOException;
-import java.util.Date;
-
-public class MemoryMonitor extends AbstractMonitor {
-
+    // Implementing the abstract method
     @Override
-    public String process() {
-        return new Date() + ":" + Runtime.getRuntime().freeMemory();
-    }
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-        new MemoryMonitor().startMonitoring("test.txt");
+    public void move() {
+        System.out.println(name + " is running.");
     }
 }
 ```
+**Note**: `super()` is used to call the constructor of the superclass from the subclass constructor, which is essential for initializing inherited members.
+
+## Instantiating a subclass under contract
+```java
+public class AnimalDemo {
+    public static void main(String[] args) {
+        // Create instances of subclasses
+        Animal bird = new Bird("Parrot");
+        Animal fish = new Fish("Goldfish");
+        Animal dog = new Dog("Bulldog");
+
+        // Call methods
+        bird.eat();
+        bird.move();
+
+        fish.eat();
+        fish.move();
+
+        dog.eat();
+        dog.move();
+    }
+}
+```
+<Details>
+<summary>Expected Output</summary>
+<code>
+
+Parrot is eating.
+
+Parrot is flying.
+
+Goldfish is eating.
+
+Goldfish is swimming.
+
+Bulldog is eating.
+
+Bulldog is running.
+
+</code>
+</Details>
+
+
+## Independent practice
+
+(5 mins)
+
+1. Find out what happens when you try to extend an abstract class but do not implement one of its abstract methods in your code. You can use the example code from _Extending an abstract class_ topic.
+2. Find out what happens when you try to instantiate an abstract class in your code. You can use the example from _Instantiating a subclass under contract_ topic.
