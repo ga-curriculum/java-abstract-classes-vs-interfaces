@@ -30,9 +30,9 @@ Any subclass that inherits from this superclass must fulfill the contract by dec
 
 ### Course landing pages
 
-- [JCD - Java Career Development Program](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/java-abstract-classes-vs-interfaces/canvas-landing-pages/jcd.html)
-- [JSC - Java Short Course](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/java-abstract-classes-vs-interfaces/canvas-landing-pages/jsc.html)
-- [Fallback](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/java-abstract-classes-vs-interfaces/canvas-landing-pages/fallback.html)
+- [JCD - Java Career Development Program](https://ga-curriculum.github.io/java-abstract-classes-vs-interfaces/canvas-landing-pages/jcd.html)
+- [JSC - Java Short Course](https://ga-curriculum.github.io/java-abstract-classes-vs-interfaces/canvas-landing-pages/jsc.html)
+- [Fallback](https://ga-curriculum.github.io/java-abstract-classes-vs-interfaces/canvas-landing-pages/fallback.html)
 
 ### Resources
 
@@ -44,4 +44,4 @@ Any subclass that inherits from this superclass must fulfill the contract by dec
 
 ---
 
-**Find a 👾 bug 👾 or have suggestions? [Let us know](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/module-feedback.html)!**
+**Find a 👾 bug 👾 or have suggestions? [Let us know](https://ga-curriculum.github.io/universal-resources-internal/module-feedback.html)!**
